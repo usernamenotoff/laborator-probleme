@@ -1,0 +1,24 @@
+#define _NO_CRT_SECURE_WARNINGS_
+#include<stdio.h>
+int plecare(int, int);
+int ajunge(int, int);
+int main()
+{
+	int h1, m1;
+	int h2, m2;
+	scanf_s("%d %d %d %d", &h1, &m1,&h2,&m2);
+	printf_s("\nora %d si minutu %d la care pleaca trenu", h1, m1, "\nora %d si minutu %d la care ajunge trenul",h2,m2);
+	
+	int ore, minute;
+	if (h1 > h2) {
+		ore = h1 - h2;
+		minute = m1 - m2;
+	}
+	else ore = h2 - h1;
+	minute = m2 - m1;
+
+	printf("\ndurata calatoriei este %d %d", ore, minute);
+
+	return 0;
+
+}

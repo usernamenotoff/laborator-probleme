@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int a, b, c;
+	scanf_s("%d%d", &a, &b);
+	int aria;
+	aria = (a * b) / 2;
+	printf("aria este%d", aria);
+	return 0;
+}

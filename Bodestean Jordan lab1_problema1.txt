@@ -1,0 +1,29 @@
+problema 1,laboratorul 1
+. Definiţi funcţii macro MAXi (i=2,3)care determină şi afişează maximul dintre 2 si alta, dintre 3 numere
+introduse de la tastatură. Folositi variante diferite (operator conditional, instructiuni if, etc.)
+#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
+using namespace.std;
+#define max2(a,b){\
+if(a>b)\
+max=a;\
+else max=b;}
+
+
+#define max3(a,b,c){if(a>b&&a>c)\
+c=a;
+else if (b>a&&b>c)c=b;\
+}
+
+int main()
+{
+
+int a,b,c,max;
+cin>>a>>b>>c;
+max2(a,b);
+cout<<"maximul dintre 2 elemente este";
+cout<<max;
+
+max3(a,b,c);
+cout<<"maximul dintre 3 elemente este;
+cout<<c;

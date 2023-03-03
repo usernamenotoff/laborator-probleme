@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+int main()
+{
+	int n, i, nr, s, contor = 0;
+	scanf_s("%d%d", &n);
+	
+	while (n != 0) {
+		contor++;
+		n = n / 10;
+
+
+	}
+
+	printf("%d", contor);
+	return 0;
+}

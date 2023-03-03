@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	char caracter[31];
+	cin.getline(caracter, 31);
+	
+	char caracter2[31];
+	cin.getline(caracter2, 31);
+
+		cout << caracter<<endl;
+	cout<< caracter2<<endl;
+	return 0;
+}

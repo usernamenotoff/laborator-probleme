@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+int main(int a, int b, float a1, float b1)
+{
+	
+	printf("introduceti numerele intregi");
+	scanf("\n%d%d", &a, &b);
+	printf("introduceti numerele reale");
+	scanf("\n%f %f", &a1, &b1);
+
+	float suma;
+	float produs;
+	suma = a1 + a + b + b1;
+	produs = a1 * a * b1 * b;
+	printf("suma elementelor este \t%.2f",suma);
+	printf("produsul elementelor este \t%.2f", produs);
+
+
+
+
+
+
+
+	return 0;
+}
+

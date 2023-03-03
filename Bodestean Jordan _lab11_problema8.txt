@@ -1,0 +1,61 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include <malloc.h>
+#include<math.h>
+int radical(int,  float*, int*);
+void afisare(int, float*);
+
+
+
+
+int main() {
+	int n;
+	float* p1 ; int* p2;
+	int i;
+	scanf("%d", &n);
+	p2 = (int*)malloc(n * sizeof(int));
+	p1 = (float*)malloc(n * sizeof(float));
+
+	
+	for (i = 0; i < n; i++) {
+		
+			printf("\np2[%d]=", i);
+			scanf("%d", p2 + i );
+		}
+	
+
+
+
+
+	radical (n, p1, p2);
+	afisare(n, p1);
+
+	
+	free(p1);
+	free(p2);
+}
+
+
+int radical(int n,float* p1, int* p2) {
+
+	int i;
+
+	
+		for (i = 0; i < n; i++) {
+			*(p1 + i )=sqrt(*(p2 +i));
+		
+			
+		
+	}
+	return *(p1 + i );
+}
+void afisare( int n, float* p1) {
+
+	int i, j;
+	for(i=0;i<n;i++){
+		
+			printf("\np3[%d]=%f", i, *(p1 + i ));
+		}
+	}

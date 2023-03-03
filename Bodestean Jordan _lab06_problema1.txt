@@ -1,0 +1,14 @@
+#define _NO_CRT_SECURE_WARNINGS_
+#include<stdio.h>
+int main()
+{
+	int a, b, c, d;
+	float x;
+	scanf_s("%d %d %d %d", &a, &b, &c,&d);
+	scanf_s(" %f", &x);
+	float f = a * (x * x * x) + b * (x * x) + c * x + d;
+	printf(" %f",f);
+	
+	return 0;
+	
+}

@@ -1,0 +1,37 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+void afisare_citire(int a[101][101],int n) { 
+	int i, j;
+	for (i = 0; i < n; i++)
+		for (j = 0; j < n; j++) {
+			printf("a[%d][%d]\t", i, j);
+			scanf("%d", a[i][j]);
+		}
+
+		}
+
+
+
+
+
+int main()
+{
+	int a[101][101];
+	int n;
+	printf("introduceti nr de linii si coloane\t");
+	scanf("%d", &n);
+
+
+	afisare_citire(a, n);
+
+	int i, j;
+	for (i = 0; i < n; i++) {
+		for (j = 1; j <= n; j++)
+			if (j > n - i && a[i][j]<0)printf("%d", a);
+
+	}
+	
+
+	return 0;
+}

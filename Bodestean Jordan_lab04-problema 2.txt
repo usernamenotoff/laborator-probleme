@@ -1,0 +1,15 @@
+2.
+# define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int a,b;//variabile//
+	printf("introduceti numerele:");
+	scanf(" %d %d", &a, &b);
+	float mg = sqrt(a * b);//formula mediei geometrice//
+
+	printf("media geometrica este: %f", mg);//afisarea mediei geometrice//
+
+	return 0;
+}

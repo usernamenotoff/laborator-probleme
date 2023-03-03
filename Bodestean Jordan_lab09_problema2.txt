@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define MAX 20
+/* function to generate and return random numbers */
+int* getRandom();
+/* main function to call the getRandom( ) function */
+int main()
+{
+	/* a pointer to an int */
+	int* p;
+	int i, j;
+	int n = MAX;
+	p = getRandom();
+	for (i = 0; i < n; i++)
+		if (p[i] % 2 != 0) {
+			for (j = i; j < n - 1; j++) {
+				p[j] = p[j + 1];
+				n--;
+			}
+
+			printf("\nFrom main p[ %d] : %d", j, p[j]);//afisarea doar elementelor pare//
+		}
+}
+
+
+int* getRandom() {
+	static int r[MAX];//must be static
+	int i;
+	/* set the seed */
+	srand((unsigned)time(NULL));
+	for (i = 0; i < MAX; ++i)
+	{
+		r[i] = rand()%50;//generate random numbers
+		printf("From function r[%d] = %d\n", i, r[i]);
+	}
+	return r;
+}
+
+	

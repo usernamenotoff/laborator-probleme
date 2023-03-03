@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+#include<ctype.h>
+int main() {
+	char c[22];
+	int m;
+	char n[200];
+	int i = 0;
+	char v[101];
+	char a;
+	printf("introduceti numele fisierului");
+	scanf("%s", c);
+
+	FILE* fp;
+
+	m = fopen_s(&fp, c, "r");
+
+	if (m != NULL) {
+		perror("Error in opening 'file.txt'");
+		exit(1);
+	}
+	while (fscanf(fp, "%c", &a) != EOF) {
+		n[i] = a;
+		i++;
+	
+		while (isspace(n[i]) != 0) {
+			for (i = 0;;) {
+				printf("\nv[%d]=", i);
+				v[i] = n[i] - 32;
+
+				printf("%c", v[i]);
+			}
+		
+		}
+	}
+		
+			
+		fclose(fp);
+		return 0;
+	}

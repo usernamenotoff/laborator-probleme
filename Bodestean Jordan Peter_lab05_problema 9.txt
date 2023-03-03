@@ -1,0 +1,16 @@
+#define _NO_CRT_SECURE_WARNINGS_
+#include<stdio.h>
+int main()
+{
+	int d = 100;
+	int v1;
+	int v2;
+	scanf_s(" %d %d ", &v1, &v2);
+	int d1 = v1 + v2; //distanta pe care o parcurg intr o ora amandoua masinile//
+	int ora = d / d1;
+	int intalnirea = ora * v1;
+	printf("intalnirea a avut loc la %d", intalnirea, "km");
+
+	return 0;
+
+}

@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{int i, v[1001], n;
+
+printf("introduceti numarul de numere:");
+scanf("%d", &n);
+
+for (i = 1; i <= n; i++) {
+	printf("\n nr este:", v[i]);
+	scanf("%d", &v[i]);
+}
+printf("numerele impare sunt:");
+for (i = 1; i <= n; i++) {
+
+	if (v[i] % 2 == 1)printf("%d  ", v[i]);
+}
+return 0;
+
+
+}

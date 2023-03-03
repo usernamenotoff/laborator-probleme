@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	unsigned char x;
+	int i, r;
+	scanf("%c", &x);
+	for (i = 1; i <= sizeof(x) * 8; i++) {
+		r = x % 2;
+		printf("restul de pe pozitia %d este  %d\n", i, r);
+		x = x >> 1;
+			if (x == 0)
+				break;
+
+	}
+
+
+	return 0;
+
+}

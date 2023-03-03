@@ -1,0 +1,17 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int nr, contor=0;
+	scanf("%d", &nr);
+	while (nr != 0) {
+
+		if (nr % 2 == 0)contor++;
+		nr = nr / 2;
+
+
+	}
+	printf("nr de zerouri este:%d", contor);
+	return 0;
+
+}

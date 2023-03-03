@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int x[30], i, n;
+	int md;//cel mai mic numar//
+	scanf("%d", &n);
+	for (i = 0; i < n; i++) {
+	printf("\nx[%d]=", i);
+	scanf_s("%d", &x[i]);
+}
+	md = x[0];//ia valoarea primului termen//
+	for (i = 0; i<n ;i++) {
+if(x[i]>=0){
+		if (md >x[i])md = x[i];
+
+	}}
+	
+	printf("%d", md);
+
+	return 0;
+
+}

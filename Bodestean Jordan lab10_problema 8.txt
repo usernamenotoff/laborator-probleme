@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+int main()
+{char a[202];
+char p[202];
+int n;
+
+printf("introduceti primul sir de caractere\t");
+scanf("%s", a);
+
+
+
+for (int i = strlen(a); i >=0; i--)//ia sirul de la cap la coada si scrie caracterele pe rand formand inversul sirului//
+{
+
+	printf("%c", a[i]);//inversul//
+
+}
+
+return 0;
+
+
+}
+
+   

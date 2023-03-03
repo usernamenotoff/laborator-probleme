@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+int main() {
+	char n[20] = { "AAA" };
+	int i;
+	printf("%s", &n);
+	struct student {
+		char nume[20];
+		char prenume[20];
+		char tara_de_origine[20];
+		char grupa[20];
+		int anul_nasterii;
+
+	}a[20];
+	char t[20] = { "Romania" };
+	int contor = 0;
+	for (i = 0;true; i++) {
+
+		printf("\nnumele: ");
+		scanf("%s", a[i].nume);
+		printf("\nprenume:");
+		scanf("%s", a[i].prenume);
+		printf("tara de origine:");
+		scanf("%s", a[i].tara_de_origine);
+		printf("grupa:");
+		scanf("%s", a[i].grupa);
+		printf("anul nasterii:");
+		scanf("%d",& a[i].anul_nasterii);
+
+		
+
+		if (a[i].tara_de_origine != t)contor++;
+		if ( not (strcmp(a[i].grupa, n)))break;
+			}

@@ -1,0 +1,16 @@
+//fara masca//
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	char  x, y, z;
+	
+	printf("Introduceti caracterele: ");
+	scanf("%c %c %c", &x, &y, &z);
+	x = x - 32;
+	y = y - 32;
+	z = z - 32;//folosirea codului ascii;//
+	printf("Ati introdus caracterele:");
+	printf("%c, %c, %c", x, y, z);
+return 0;
+}

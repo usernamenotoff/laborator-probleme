@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+int main() {
+	char c[22];
+	int m;
+	char n[20];
+	int i;
+	char v[101];
+	printf("introduceti numele fisierului");
+	scanf("%s", c);
+
+	
+	FILE* fp;
+
+	m = fopen_s(&fp, c, "r");
+
+	if (m != NULL) {
+		perror("Error in opening 'file.txt'");
+		exit(1);
+	}
+	fprintf(fp,"introduceti sirul de caractere");
+	fscanf(fp,"%s", n);//scrieti sirul de caractere din fisier//
+
+	for (i = 0; i < strlen(n); i++) {
+		printf("\n[%d]=", i);
+		printf("%c", n[i]);//preia sirul de caractere din fiser si le scrie litera cu litera//
+	}
+		fclose(fp);
+		return 0;
+	}

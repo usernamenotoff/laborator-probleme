@@ -1,0 +1,18 @@
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	char  x, y, z;
+	int k = 0;
+	printf("Introduceti caracterele: ");
+	scanf("%c %c %c", &x, &y, &z);
+
+
+	x = x & 0x5f;
+	
+	y = y & 0x5f;
+	z = z & 0x5f;
+	printf("\n%c,%c,%c", x, y, z);
+	return 0;
+}

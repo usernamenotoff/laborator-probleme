@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+struct informatii{
+		int zii = 20;
+		int luna = 4;
+		int an = 2007;
+}a;
+void afisare(struct informatii );
+void afisare_data_precedenta(struct informatii);
+struct informatii nastere(struct informatii a);
+int main() {
+
+	struct informatii p;
+	p = nastere(a);
+	afisare_data_precedenta(a);
+	afisare(p);
+
+	}
+
+void afisare_data_precedenta(struct informatii a) {
+	printf("ziua nasterii:%d", a.zii);
+	printf("\nluna nasterii:%d", a.luna);
+	printf("\nanul nasterii:%d", a.an);
+}
+
+	
+	
+struct informatii nastere(struct informatii a) {
+	a.zii -= 1;
+	a.luna -= 2;
+	a.an -= 5;
+	return a;
+}
+void afisare(struct informatii a) {
+	printf("\n\nziua nasterii=%d", a.zii);
+	printf("\nluna nasterii=%d", a.luna);
+	printf("\nanul nasterii=%d", a.an);
+}

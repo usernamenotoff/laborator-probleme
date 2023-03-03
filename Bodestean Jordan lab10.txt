@@ -1,0 +1,500 @@
+/* problema 1
+Implementaţi programul prezentat în exemplul 3 şi examinaţi eventualele erori date la compilare daca exista prin eliminarea comentariilor. Modificaţi programul astfel încât să se poată accesa din funcţia main( ), prin intermediul obiectului obiect_derivat, şi metodele aduna( ) şi scade( ) din clasa de baza pastrand mostenirea de tip private.*/
+
+#include  <iostream>
+
+using  namespace  std;
+
+class  Baza  {
+protected:  int  a,  b;
+public:
+        Baza()  {  a  =  1,  b  =  1;  }
+        void  setA(int  a)  {
+                this->a  =  a;
+        }
+        void  setB(int  b)  {
+                this->b  =  b;
+        }
+        int  getA()  {
+                return  a;
+        }
+        int  getB()  {
+                return  b;
+        }
+        int  aduna()  {
+                return  a  +  b;
+        }
+        int  scade()  {
+                return  a  -  b;
+        }
+};
+
+class  Derivata  :  private  Baza{
+public:
+        int  inmulteste()  {
+                return  a  *  b;
+        }
+        int  aduna()  {
+                return  a  +  b;
+        }
+        int  scade()  {
+                return  a  -  b;
+        }
+};
+
+int  main(){
+        Baza  obiect_baza;
+        cout  <<  "Afis  din  baza  (val.  initiale):  "  <<  obiect_baza.getA()  <<  "  "  <<  obiect_baza.getB()  <<  '\n';
+        obiect_baza.setA(2);
+        obiect_baza.setB(3);
+
+        cout  <<  "Afis  din  baza  (redefinit):  "  <<  obiect_baza.getA()  <<  "  "  <<  obiect_baza.getB()  <<  '\n';
+        Derivata  obiect_derivat;
+        cout  <<  "\nProdusul  este  (din  derivat  cu  val.  initiale:  "  <<  obiect_derivat.inmulteste();
+        obiect_derivat.scade();
+        obiect_derivat.aduna();
+
+        return 0;}
+
+
+
+
+
+
+
+
+
+
+
+/*Bodestean Jordan-Denisa Trifon problema 2
+ Folosind modelul claselor de la mostenirea publica, implementaţi două clase, astfel:
+- clasa de bază contine metode pentru:
+-codarea unui şir de caractere (printr-un algoritm oarecare- recomandat XOR cu o masca fixa) => public;
+-afişarea şirului original şi a celui rezultat din transformare = > public;
+- clasa derivata contine o metoda pentru:
+-scrirea rezultatului codării într-un fişier, la sfârşitul acestuia.
+Fiecare inregistrare are forma: nr_inregistrare: şir_codat;
+Accesul la metodele ambelor clase se face prin intermediul unui obiect rezultat prin instanţierea clasei derivate. Programul care foloseşte clasele 
+citeşte un şir de caractere de la tastatură şi apoi, în funcţie de opţiunea utilizatorului, afişează rezultatul codării sau îl scrie în fişier.*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+int contor = 1;
+class Sir_Baze {
+        char sir[20];
+public:
+        char* cripta();//functie ce cripteaza un sir de caractere
+        void afisare_sir_initial();//functie ce afiseaza sirul initial
+        void afisare_sir_cript(char[]);//functie ce afiseaza sirul criptat
+        void setSir(char a[]) {
+                strcpy(sir, a);
+        }
+
+
+
+
+};
+char* Sir_Baze:: cripta() {
+        char caracter = 'a';
+        int nr_litere = strlen(sir);
+        char sir_cript[20];
+        for (int i = 0;i < nr_litere;i++) {
+                sir_cript[i] = sir[i] ^ caracter;
+        }
+        return sir_cript;
+}
+void Sir_Baze::afisare_sir_initial() {
+        cout << "\nSirul initial este " << sir;
+}
+void Sir_Baze::afisare_sir_cripta(char a[]) {
+        cout << "\nSirul criptat este " << a;
+}
+
+class Sir_derivat :public Sir_Baze {//clasa derivata
+public:
+        void scriere_in_fisier() {//functie pentru scrierea in fisier
+                int m;
+                FILE *fisier;
+                m = fopen_s(&fisier, "Text.txt", "w");
+                if (m != 0) {//conditie care verifica daca fisierul a fost creat
+                        puts("\nFisierul nu s-a creat!");
+                        return;
+                }
+                else {
+                        fseek(fisier, 20, SEEK_END);
+                        fprintf(fisier, "\nIntrgistrarea nr %d : %s", contor, criptare());
+                }
+                fclose(fisier);
+
+        }
+
+
+
+};
+
+int main() {
+        Sir_derivat sir;
+        char aux[20], caract;
+        
+
+        cout << "\nIntroduceti un sir de caractere:";
+        cin >> aux;
+        sir.setSir(aux);
+
+        cout << "\nIntroduceti un caracter(s-afisarea sirului criptat,f-scrierea sirului criptat intr-un fisier,e-exit):";
+        cin >> caract;
+        switch (toupper(caract)) {
+        case 'S': { sir.afisare_sir_cript(sir.cripta());break; }
+        case 'F': { cout << "\nSirul cripatat a fost scris in fisier ";sir.scriere_in_fisier() ;contor++; break; }
+        case 'E': return 0;
+        }
+}
+
+
+
+/*Bodestean Jordan-Denisa Trifon problema 3
+
+Să se implementeze o clasă de bază cu două atribute protected de tip întreg care conţine o metoda mutator pentru fiecare
+atribut al clasei, parametri metodelor fiind preluati in main() de la tastatura şi metode accesor pentru fiecare atribut care returneaza atributul
+specific.Să se scrie o a doua clasă, derivată din aceasta, care implementează operaţiile matematice elementare : +, -, *, / asupra atributelor din clasa
+de bază, rezultatele fiind returnate de metode.Să se scrie o a treia clasă, derivată din cea de - a doua, care implementează în plus o metoda pentru
+extragerea rădăcinii pătrate dintr - un număr(mul, rezultat al operatiei * din prima clasa derivata) şi de ridicare la putere(atât baza(plus, rezultat
+al operatiei + din prima clasa derivata) cât şi puterea(minus, rezultat al operatiei - din prima clasa derivata) sunt trimişi ca parametri).Verificati
+apelul metodelor considerand obiecte la diferite ierarhii.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <math.h>
+#include <cstdlib>
+using namespace std;
+
+class Baza {
+protected:
+        int a, b;
+public:
+        Baza(int a, int b) {
+                this->a = a;
+                this->b = b;
+        }
+        int getA() {
+                return a;
+        }
+        int getB() {
+                return b;
+        }
+
+};
+//clasa derivata, in mod public
+class Derivata_Baza : public Baza
+{
+public:
+        Derivata_Baza(int a, int b) :Baza(a, b) {
+        }
+        int suma() {
+                return a + b;
+        }
+        int diferenta() {
+                return a - b;
+        }
+        int produs() {
+                return a * b;
+        }
+        float cat() {
+                return (float)a / b;
+        }
+
+};
+//clasa derivata a derivatei, publica
+class Derivata_Derivata : public Derivata_Baza
+{
+public:
+        Derivata_Derivata(int a, int b) :Derivata_Baza(a, b) {
+        }
+        float radical() {
+                return (float)sqrt(produs());
+        }
+        float putere() {
+                float rez = 1, aux;
+                int baza, putere, nr;
+                baza = suma();
+                putere = diferenta();
+                aux = (float)1 / baza;
+                nr = abs(putere);
+                if (putere > 0) {
+                        for (int i = 0; i < nr; i++) {
+                                rez *= baza;
+                        }
+                }
+                else if (putere < 0) {
+                        for (int i = 0; i < nr; i++) {
+                                rez = rez * (float)aux;
+                        }
+                }
+                else {
+                        rez = 1;
+                }
+                return rez;
+        }
+};
+
+int main()
+{
+        Derivata_Derivata dd(2, 4);
+        Baza b(10, 3);
+        Derivata_Baza db(2, -3);
+        cout << "\nArgumentele obiectului din clasa Baza sunt " << b.getA() << " si " << b.getB();
+        cout << "\nSuma dintre " << db.getA() << "," << db.getB() << " este "<< db.suma();
+        cout << "\nDiferenta dintre" << dd.getA() << "," << dd.getB() << " este " << dd.diferenta();
+        cout << "\nProdusul dintre " << db.getA() << "," << db.getB() << " este " << db.produs();
+        cout << "\nCatul dintre " << dd.getA() << "," << dd.getB()  << " este " << dd.cat();
+        cout << "\nRadicalul " << dd.getA() << "," << dd.getB() << " este " << dd.radical();
+        cout << "\nPuterea " << dd.getA() << "," << dd.getB() << " este " << dd.putere();
+        return 0;
+}
+
+
+
+
+/* Bodestean Jordan-Denisa Trifon problema 4
+
+Definiţi o clasă numita Triangle care are 3 atribute protected pentru laturi si o metoda care calculează perimetrul unui triunghi ale cărui laturi
+sunt citite de la tastatura (folosite de un constructor adecvat) şi apoi o clasă derivata in mod public din Triangle, Triangle_extended, care în plus,
+calculează şi aria triunghiului. Folosind obiecte din cele doua clase apelati metodele specifice. Verificati inainte de instantiere posibilitatea
+definirii unui triunghi.*/
+
+#include <iostream>
+using namespace std;
+
+class Triunghi {
+protected: int l1, l2, l3;
+public:
+        Triunghi(int a, int b, int c) {
+                l1 = a;
+                l2 = b;
+                l3 = c;
+        }
+        //destructor
+        ~Triunghi();
+        int perimetru() {
+                return l1 + l2 + l3;
+        }
+        
+};
+//clasa Triunghi_extins derivata in mod public din clasa Triunghi
+class Triunghi_extins : public Triunghi {
+public:
+        Triunghi_extins() = default;
+        float aria() {
+                float sp; //sp=semiperimetru
+                sp = perimetru() / 2;
+                return (float)sqrt(sp * (sp - l1) * (sp - l2) * (sp - l3));
+        }
+};
+int main() {
+        int l1, l2, l3;
+        cout << "\nIntroduceti cele 3 laturi:\n";
+        cout << "\tl1= ";
+        cin >> l1;
+        cout << "\tl2= ";
+        cin >> l2;
+        cout << "\tl3= ";
+        cin >> l3;
+        //verificarea existentei unui triunghi
+        if (l1 + l2 > l3 || l2 + l3 > l1 || l1 + l3 > l2) {
+                cout << "\nExista triunghi.";
+        }
+        else cout << "\nNu exista triunghi.";
+        Triunghi t(l1, l2, l3);
+        Triunghi_extins tr_extins();
+        cout << "\nPerimetrul triunghiului este:" << t.perimetru();
+        cout << "\nAria triunghiului este: " << tr_extins.aria();
+
+}
+
+
+
+
+
+
+/* Bodestean Jordan -Denisa trifon problema 6
+Definiţi o clasă numită Forme care considera o figura geometrica cu un nume ca si atribut de tip pointer la un sir de caractere. Clasa va contine un constructor fara parametrii, unul cu parametrii, copy/move constructor si se va supraincarca operatorul de asignare. Clasa va avea si metode getter/setter si un destructor. Derivati in mod public o clasa Cerc care adauga un atribut de tip int pentru raza si constructori adecvati considerand si atributele (nume, raza) si o metoda getter pentru raza si alte metode care calculeaza aria si perimetrul cercului de raza r, valoare introdusa in main( ) de la tastatura. Similar definiti o clasa Patrat si Dreptunghi care permit determinarea ariei si perimetrului obiectelor specifice. Instantiati obiecte din clasele derivate si afisati aria si perimetrul obiectelor. Datele specifice vor fi introduse de la tastatura. Definiti un obiect de tip Cerc cu parametrii care sa il copiati intr-un nou obiect clona la care sa
+ii afisati atributele. Definiti un obiect de tip Patrat cu parametrii si altul fara parametrii. Asignati celui fara parametrii obiectul instantiat cu parametrii si afisati atributele.
+*/
+
+#include <cstring>
+
+class Forme {
+    char *nume;
+
+public:
+    Forme() {
+        nume = new char[20];
+    }
+
+    Forme(char *nume_){
+        this->nume = new char[strlen(nume_) + 1];
+        strcpy(this->nume, nume_);
+    }
+
+    Forme(const Forme& forme){
+        this->nume = new char[strlen(forme.nume) + 1];
+        strcpy(this->nume, nume);
+    }
+
+    virtual ~Forme() {
+        delete[] nume;
+    }
+
+    Forme& operator=(const Forme& forme){
+        this->nume = new char[strlen(forme.nume) + 1];
+        strcpy(this->nume, forme.nume);
+        return *this;
+    }
+};
+
+
+
+#include "Forme.h"
+
+class Cerc : public Forme{
+    int raza;
+
+public:
+    Cerc(char *nume_, int raza_) : Forme(nume_){
+        this->raza = raza_;
+    }
+
+    Cerc(const Cerc& cerc_) : Forme(cerc_) {
+        this->raza = cerc_.raza;
+    }
+
+    Cerc& operator=(const Cerc& cerc_){
+        this->raza = cerc_.raza;
+        return *this;
+    }
+
+    int getRaza() const {
+        return raza;
+    }
+
+    double perimetru() const{
+        return 2 * 3.14 * raza;
+    }
+
+    double arie() const{
+        return 3.14 * raza*raza;
+    }
+};
+
+
+#include "Forme.h"
+
+class Dreptunghi : public Forme{
+    int lungime;
+    int latime;
+
+public:
+    Dreptunghi(char *nume_, int lungime_, int latime_): Forme(nume_),
+        lungime(lungime_), latime(latime_){}
+
+    Dreptunghi(const Dreptunghi& dreptunghi_) : Forme(dreptunghi_) {
+        this->lungime = dreptunghi_.lungime;
+        this->latime = dreptunghi_.latime;
+    }
+
+    Dreptunghi& operator=(const Dreptunghi& dreptunghi_){
+        this->lungime = dreptunghi_.lungime;
+        this->latime = dreptunghi_.latime;
+        return *this;
+    }
+
+    double perimetru() const{
+        return 2 * lungime + 2 * latime;
+    }
+
+    double arie() const{
+        return lungime * latime;
+    }
+};
+
+
+
+#include "Forme.h"
+
+class Patrat : public Forme{
+    int latura;
+
+public:
+    Patrat(char *nume_, int latura_) : Forme(nume_), latura(latura_){}
+
+    Patrat(const Patrat& patrat_) : Forme(patrat_) {
+        this->latura = patrat_.latura;
+    }
+
+    Patrat& operator=(const Patrat& cerc_){
+        this->latura = cerc_.latura;
+        return *this;
+    }
+
+    double perimetru() const{
+        return 4 * latura;
+    }
+
+    double arie() const{
+        return latura*latura;
+    }
+};
+
+
+#include <iostream>
+#include <cstring>
+#include "Dreptunghi.h"
+#include "Patrat.h"
+#include "Cerc.h"
+using namespace std;
+
+int main() {
+    char s[20];
+    int a,b,r,n;
+
+    std::cout << "Numar de forme: "; std::cin >> n;
+    for (int i=0; i<n; i++){
+        cout << "Numele figurii (cerc, patrat, dreptunghi) " << i+1 <<": "; cin >> s;
+
+        if (strcmp(s, "cerc") == 0){
+            cout << "Raza cercului: "; cin>> r;
+            Cerc c(s, r);
+            cout << "Perimetru: " << c.perimetru() << ", arie:" << c.arie() <<"\n";
+        }
+        else if (strcmp(s, "patrat") == 0){
+            cout << "Latura patratului: "; cin>> a;
+            Patrat p(s, a);
+            cout << "Perimetru: " << p.perimetru() << ", arie:" << p.arie() <<"\n";
+        }
+        else if (strcmp(s, "dreptunghi") == 0){
+            cout << "Lungimea dreptunghiului: "; cin>> a;
+            cout << "Latimea dreptunghiului: "; cin>> b;
+            Dreptunghi d(s, a,b);
+            cout << "Perimetru: " << d.perimetru() << ", arie:" << d.arie() <<"\n";
+        }
+        else
+            cout << "Nume invalid!\n";
+    }
+
+    char *nume;
+    strcpy(nume, "cerc");
+    Cerc cerc(nume, 10);
+    Cerc cerc_copie = cerc;
+    cout << "Perimetru: " << cerc_copie.perimetru();
+    cout << "\nArie: " << cerc_copie.arie();
+    cout << "\nRaza: " << cerc_copie.getRaza();
+
+    strcpy(nume, "patrat");
+    Patrat patrat(nume, 10);
+    const Patrat& patrat_copie(patrat);
+    cout << "\nPerimetru: " << patrat_copie.perimetru();
+    cout << "\nArie: " << patrat_copie.arie();
+    return 0;
+}

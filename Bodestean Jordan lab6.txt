@@ -1,0 +1,507 @@
+/*problema 1 
+Bodestean Jordan-Trofin Denisa
+Să se scrie o aplicaţie C++ care implementează o clasă numită PilotF1. Clasa definește
+variabilele private nume (șir de caractere), echipa (șir de caractere), varsta (int), record (int),
+nr_pole_position (int). Ca membri publici, clasa conține metode accesor/getter și
+mutator/setter distincte pentru fiecare din atributele clasei.
+In funcția main( ), să se creeze 3 instanțe distincte ale clasei PilotF1 și să se folosească
+metodele mutator/setter pentru a inițializa datele din fiecare obiect cu informația
+corespunzătoare citită de la tastatură. Folosind metodele accesor/getter, să se afișeze toate
+datele pilotului cu cel mai bun record.*/
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Pilot
+{
+private:
+        char nume[20];
+        char echipa[20];
+        int varsta;
+        int record;
+        int nr_pole_position;
+        int record_max;
+
+public:
+        char* getNume()
+        {
+                return nume;
+        }
+        void setNume(const char* n)
+        {
+                strcpy(nume, n);
+        }
+        char* getEchipa()
+        {
+                return echipa;
+        }
+        void setEchipa(char* e)
+        {
+                strcpy(echipa, e);
+        }
+        int getVarsta()
+        {
+                return varsta;
+        }
+        void setVarsta(int varsta)
+        {
+                this->varsta = varsta;
+        }
+        int getRecord()
+        {
+                return record;
+        }
+        void setRecord(int record)
+        {
+                this->record = record;
+        }
+        int getNr_pole_position()
+        {
+                return nr_pole_position;
+        }
+        void setNr_pole_position(int nr_pole_position)
+        {
+                this->nr_pole_position = nr_pole_position;
+        }
+
+        
+
+};
+
+
+
+
+int main()
+{
+        Pilot p1;
+        p1.setVarsta(20);
+        p1.setNume("Mihai");
+        p1.setRecord(200);
+        p1.setNr_pole_position(50);
+        cout << "\n\tPilot 1:";
+        cout << "\nNume: " << p1.getNume();
+        cout << "\nVarsta: " << p1.getVarsta();
+        cout << "\nRecord: " << p1.getRecord();
+        cout << "\nNr pole position: " << p1.getNr_pole_position();
+
+        Pilot p2;
+        p2.setVarsta(40);
+        p2.setNume("Luca");
+        p2.setRecord(500);
+        p2.setNr_pole_position(100);
+        cout << "\n\tPilot 2:";
+        cout << "\nNume: " << p2.getNume();
+        cout << "\nVarsta: " << p2.getVarsta();
+        cout << "\nRecord: " << p2.getRecord();
+        cout << "\nNr pole position: " << p2.getNr_pole_position();
+
+        Pilot p3;
+        p3.setVarsta(38);
+        p3.setNume("Ionescu");
+        p3.setRecord(700);
+        p3.setNr_pole_position(500);
+        cout << "\n\tPilot 3:";
+        cout << "\nNume: " << p3.getNume();
+        cout << "\nVarsta: " << p3.getVarsta();
+        cout << "\nRecord: " << p3.getRecord();
+        cout << "\nNr pole position: " << p3.getNr_pole_position();
+        cout << endl;
+        Pilot max;
+        if (p1.getRecord() > p2.getRecord() && p1.getRecord() > p3.getRecord()) {
+                max.setNume(p1.getNume());
+                max.setVarsta(p1.getVarsta());
+                max.setRecord(p1.getRecord());
+                max.setNr_pole_position(p1.getNr_pole_position());
+
+        }
+        else if (p2.getRecord() > p1.getRecord() && p2.getRecord() > p3.getRecord()) {
+                max.setNume(p2.getNume());
+                max.setVarsta(p2.getVarsta());
+                max.setRecord(p2.getRecord());
+                max.setNr_pole_position(p2.getNr_pole_position());
+
+
+        }
+        else {
+                max.setNume(p3.getNume());
+                max.setVarsta(p3.getVarsta());
+                max.setRecord(p3.getRecord());
+                max.setNr_pole_position(p3.getNr_pole_position());
+        }
+        cout << endl;
+        cout << "Pilot cu recordul cel mai mare" << endl;
+        cout << "varsta:"<<max.getVarsta() << endl;
+        cout << "nume:"<<max.getNume() << endl;
+        cout << "record:"<<max.getRecord() << endl;
+        cout << "nr pole positie:"<<max.getNr_pole_position() << endl;
+        
+}
+
+
+
+/*problema 2
+Să se modifice exemplul 2 astfel încât codul să poată fi lansat în execuție considerand
+atributul clasei private si metode public get/set adecvate. In main() instantiati un obiect din
+clasa care va fi modificat si apoi accesat, afisand rezultatul.*/
+
+#include<iostream>
+using namespace std;
+
+class Test2 {
+private:int x;
+
+public:
+        void setX(int x) {
+                this->x = x;
+        }
+        int getX() {
+                return x;
+        }
+};
+
+        int main() {
+
+
+                Test2 nr;
+                nr.setX(20);
+                cout << nr.getX();
+
+        }
+
+
+
+
+/*problema 4
+Să se scrie o clasă care are ca variabilă privată un câmp de tip data, definit într-o structură externă clasei. Clasa conține metode 
+mutator/setter și accesor/getter (publice) pentru informația privată, ca si structura de tip data, pentru fiecare camp din structura. In clasă se mai
+află doua metode publice care:
+- testează validitatea datei stocate;
+- scrie într-un fișier toate datele din anul curent care preced (cronologic) data stocată în clasă considerand doar atributul an ca fiind variabil;
+In functia main(), după instanțierea clasei și citirea de la tastatură a componentelor unei date, să se apeleze metodele membre și apoi să se verifice 
+rezultatele obținute.*/
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+ofstream fout("Text.txt");
+
+struct Strdata
+{int luna;
+        int an;
+        int zi;
+        
+};
+
+class Timp 
+{
+private: Strdata data;
+public:
+        int getZi()
+        {
+                return data.zi;
+    }
+        void setZi(int zi)
+        {
+                data.zi = zi;
+        }
+        int getLuna()
+        {
+                return data.luna;
+        }
+        void setLuna(int luna)
+        {
+                data.luna = luna;
+        }
+        int getAn()
+        {
+                return data.an;
+        }
+        void setAn(int an)
+        {
+                data.an = an;
+        }
+        int setValidare()
+        {
+                if (data.an > 0)
+                {
+                        if ((data.luna >= 1) && (data.luna <= 12))
+                  {
+                       if ((data.zi >= 1) && (data.zi < 31))
+                       {
+                                   return 1;
+                           }
+                     }
+                }
+                return 0;
+        }
+        void generare()
+        {
+                for (int i = data.luna; i<=12; i++)
+                {
+                        if (i == data.luna)
+                        {
+                                for (int j = data.zi; j <= 31; j++)
+                                {
+                                        fout << j << "." << i << "." << data.an << endl;
+                                }
+                        }
+                            for (int j = 1; j <= 31; j++)
+                            {
+                                        fout << j << "." << i << "." << data.an << endl;
+                            }
+                }
+        }
+};
+
+int main()
+{
+        int zi, luna, an;
+        Timp d, * strd = &d;
+        cout << "\nIntroduceti ziua: ";
+        cin >> zi;
+        strd->setZi(zi);
+        cout << "\nIntroduceti luna: ";
+        cin >> luna;
+        strd->setLuna(luna);
+        cout << "\nIntroduceti anul: ";
+        cin >> an;
+        strd->setAn(an);
+        if (strd->setValidare() == 1)
+        {
+                cout << "\nData este valida!";
+                strd->generare();
+        }
+        else
+                cout << "\nData este invalida!";
+}
+
+
+
+
+/*Bodestean Jordan -Trofin Denisa   problema 6
+Să se scrie o aplicaţie C++ care implementează o clasă numită Triunghi. Clasa cuprinde
+atributele private pentru laturile a, b, c de tip int, un constructor cu parametrii, metode setter si
+getter adecvate. Calculați aria și perimetrul prin metode specifice clasei. Scrieți o metodă care
+să indice dacă triunghiul este dreptunghic sau nu. Definiti o metoda private cu parametrii in
+clasa care permite verificarea condiției ca laturile să formeze un triunghi. Ea va fi folosita si
+de metodele setter.
+*/
+
+// cu public si private//
+#include <iostream>
+using namespace std;
+#include<math.h>
+class Triunghi
+{
+private: int a;
+           int b;
+           int c;
+public:
+
+        int getPerimetru()
+        {
+                return a + b + c;
+        }
+        void setLaturi(int x, int y, int z)
+        {
+                a = x;
+                b = y;
+                c = z;
+        }
+        
+
+        float  getAria()
+        {
+                return   sqrt(((a + b + c) / 2) * ((a + b + c) / 2 - a) * ((a + b + c) / 2 - b) * ((a + b + c) / 2 - c));
+                
+        }
+        
+        int  getDreptunghic() {
+                int ok = 0;
+                if ((a * a == b * b + c * c) || (b * b == a * a + c * c) || (c * c == a * a + b * b)) ok = 1;
+                        return ok ;
+                
+        }
+
+
+};
+
+int main()
+{
+        Triunghi t1;
+        t1.setLaturi(3, 4, 5);
+        
+        cout << "\nperimetrul este: " << t1.getPerimetru();
+        cout << "\nAria este: " << t1.getAria() << endl;
+        if (t1.getDreptunghic() == 1)cout << "triunghiul este drepthunghic" << endl;
+        else cout << "triunghiul nu este drepthunghic" << endl;
+
+}
+
+
+/*problema 8
+Dezvoltați aplicația prezentată în exemplul 6 varianta a doua, b) prin:
+- utilizarea valorilor returnate de metoda setValidCnp( ) pentru a valida suplimentar (luna si ziua) CNP-ul in main( ) 
+functie de an bisect sau nu si numarul lunii.
+- permiterea intoducerii de coduri CNP care încep cu alte cifre decât 1 și 2, cu analiza semnificației noilor valori (5 �" masculin, 6 - feminin).
+
+*/
+
+
+
+#include <iostream>
+using namespace std;
+#include <time.h>
+const int dim_sir = 24;
+class Person {
+        // membri private
+        char nume[dim_sir];
+        char prenume[dim_sir];
+        char cnp[14];
+        // structura CNP: S AN LU ZI 6cifre; total 13 cifre
+public:
+        // membri publici
+        void setNume(char* n);
+        void setPrenume(char* p);
+        int setValidCnp(char* c);
+        char* getNume(void) {
+                return nume;
+        }
+        char* getPrenume(void) {
+                return prenume;
+        }
+        char* getCnp(void) {
+                return cnp;
+        }
+        char get_gender(void);
+        int get_an_nast(void);
+        int get_luna_nast(void);
+        int get_an_bisect(void);
+        int get_zi_nast(void);
+        int get_varsta(void);
+};
+void Person::setNume(char* n) {
+        if (n != 0)
+                strncpy_s(nume, n, dim_sir - 1);
+        else
+                strcpy_s(nume, "Necunoscut");
+}
+void Person::setPrenume(char* p) {
+        if (p != 0)
+                strncpy_s(prenume, p, dim_sir - 1);
+        else
+                strcpy_s(prenume, "Necunoscut");
+}
+int Person::setValidCnp(char* c) {
+        char buf[3];
+        int ok = 0;
+        int n;
+        if (c != 0) {
+                // validare CNP: numai pentru cifra gen, cifrele pentru AN, LU, ZI
+                if (strlen(c) != 13)//lungime cnp
+                        return 1;
+                if (c[0] != '5' && c[0] != '6' && c[0] != '1' && c[0] != '2')//cod cnp
+                        return 2;
+                strncpy_s(buf, c + 1, 2);//an
+                buf[2] = '\0';
+                n = atoi(buf);
+                if (n > 99)
+                        return 3;//inconsistent
+                strncpy_s(buf, c + 3, 2);//luna
+                buf[2] = '\0';
+                n = atoi(buf);
+                if (n == 0 || n > 12)
+                        return 4;
+                strncpy_s(buf, c + 5, 2);//zi
+                buf[2] = '\0';
+                n = atoi(buf);
+                if (n == 0 || n > 31)
+                        return 5;
+                strcpy_s(cnp, c);//copiere sir c valid in cnp
+                return 0;
+        }
+        else return -1;
+}
+char Person::get_gender(void) {
+        if (cnp[0] == '5') return 'M';
+        if (cnp[0] == '6') return 'F';
+        if (cnp[0] == '1') return 'M';
+        if (cnp[0] == '2') return 'F';
+        return 'X';
+}
+int Person::get_an_nast(void) {
+        char buf[3];
+        strncpy_s(buf, cnp + 1, 2);
+        buf[2] = '\0';
+        return(1900 + atoi(buf));
+        
+}
+ 
+int Person::get_luna_nast(void) {
+        char buf[3];
+        strncpy_s(buf, cnp + 3, 2);
+        buf[2] = '\0';
+        return(atoi(buf));
+}
+int Person::get_zi_nast(void) {
+        return((cnp[5] - '0') * 10 + (cnp[6] - '0'));
+}
+int Person::get_varsta(void) {
+        struct tm newTime;
+        time_t szClock;
+        time(&szClock);
+        localtime_s(&newTime, &szClock);
+        int an_c = 1900 + newTime.tm_year;
+        int an_n = get_an_nast();
+        int n = an_c - an_n;
+        int lu_c = newTime.tm_mon + 1;
+        int lu_n = get_luna_nast();
+        if (lu_c < lu_n)
+                n--;
+        else {
+                if (lu_c == lu_n) {
+                        int zi_c = newTime.tm_mday;
+                        int zi_n = get_zi_nast();
+                        if (zi_c < zi_n) n--;
+                }
+        }
+        return n;
+}
+int main() {
+        Person p1;
+        char aux_string[dim_sir];
+        cout << "\nEnter Name: ";
+        cin >> aux_string;//Popescu
+        p1.setNume(aux_string);
+        cout << "\nEnter SurName: ";
+        //cin >> aux_string;//Bitanescu
+        cin.ignore();
+        gets_s(aux_string, dim_sir);//Preia Prenume si cu spatiu
+        p1.setPrenume(aux_string);
+        cout << "\nEnter CNP: ";
+        cin >> aux_string;//1890403120671
+        int t_cnp = p1.setValidCnp(aux_string);
+        switch (t_cnp) {
+        case 0: cout << "\nCNP valid\n";
+                cout << "\nDate despre obiect: " << endl;
+                cout << "\tNume: " << p1.getNume() << ", Prenume: " << p1.getPrenume() << ", CNP: " << p1.getCnp() << endl;
+                cout << "\tGen: " << p1.get_gender() << endl;
+                cout << "\tData nasterii: " << p1.get_an_nast() << "/" << p1.get_luna_nast() << "/" << p1.get_zi_nast() << endl;
+                cout << "\tVarsta: " << p1.get_varsta() << endl; 
+                if (p1.get_an_nast()%4 == 0)cout << "Anul este bisect!";
+                else cout << "Anul nu este bisect!";
+                break;
+        case 1: cout << "\nLungime sir CNP invalid"; break;
+        case 2: cout << "\nGen invalid"; break;
+        case 3: cout << "\nAn invalid"; break;
+        case 4: cout << "\nLuna invalida"; break;
+        case 5: cout << "\nZi invalida"; break;
+        default: cout << "\nProbleme CNP"; break;
+        }
+        return 0;
+}

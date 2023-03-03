@@ -1,0 +1,17 @@
+#define _NO_CRT_SECURE_WARNINGS_
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int a, b, c;
+	scanf_s("%d %d %d", &a, &b, &c);
+	printf("laturile triunghiului sunt %d %d %d:", a, b, c);
+	int p=(a*b+a*c+c*b)/2;
+	printf("\nsemiperimetrul este %d:", p);
+
+	float ar = sqrt(p * (p - a) * (p - b) * (p - c));
+	printf("\naria este %f:", ar);
+	
+	return 0;
+	
+}

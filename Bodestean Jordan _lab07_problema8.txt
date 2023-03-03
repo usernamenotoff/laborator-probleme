@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+int main()
+{
+	int n, i, nr, s;
+	scanf_s("%d%d", &n,&s);
+	
+	nr = n;
+	for (i = 1; i < s; i++) {
+
+		n = n + nr;
+	}
+	if (s == 0)n = 0;
+
+	printf("%d", n);
+	return 0;
+}

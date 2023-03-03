@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define DIM 200
+
+int main() {
+	char p[20];
+	char n[20];
+	printf("introduceti numele \n ");
+	scanf("%s", n);
+	printf("introduceti pronumele\n  ");
+	scanf("%s", p);
+
+		
+	p[0] = p[0] - 32;//litera mica se face mare//
+	n[0] = n[0] - 32;
+	printf("%s",n);//afisarea numelui si prenumelui cu litera mare//
+
+	printf("%s", p);
+
+	return 0;
+}

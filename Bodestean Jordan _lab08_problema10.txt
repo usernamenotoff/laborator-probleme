@@ -1,0 +1,41 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include <malloc.h>
+#include<math.h>
+void matrice(int n, int v[101], int x[101] ,int nr );
+
+int main() {
+	int v[101],x[101];
+	int i,n;
+	printf("introduceti nr de elemente");
+	scanf("%d", &n);
+	for (i = 0; i < n; i++) {
+		printf("\nv[%d]=", i);
+		scanf("%d", &v[i]);
+
+	}
+	
+	int nr = 0;
+	for (i = 0; i < n; i++) {
+		if (v[i] % 2 == 0)
+			nr++;
+	}
+
+	matrice(n, x, v, nr);
+
+
+	}
+
+void matrice(int n, int x[101],int v[101],int nr) {
+	int i;
+	for (i = 0; i < n; i++) {
+		printf("\nx[%d]=", i);
+		x[i] = v[i] % nr;
+		printf("%d", x[i]);
+
+
+	}
+
+}

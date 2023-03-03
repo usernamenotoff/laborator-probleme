@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+int main(void) {
+	int i, n, * tab = NULL;
+	printf("\nIntroduceti dimensiunea tablolului: ");
+	scanf("%d", &n);
+	if ((tab = (int*)malloc(n * sizeof(int))))
+	{
+		printf("\nIntroduceti elementele tablolului: \n");
+		for (i = 0; i < n; i++)
+		{
+			printf("\t elementul %d: ", i);
+			scanf("%d", tab + i);
+		}
+		
+
+
+		
+		for (i = 0; i < n; i++) {
+			
+				printf("\n tab[%d] = %d", i, tab[i]);
+				// printf("\n tab[%d] = %d", i, *(tab +i));
+				printf("\n");
+			}
+			
+		}
+	
+	else
+		
+		printf("\nAlocare nereusita !");
+	int s = 0;
+	for (i = 0; i < n; i++) {
+		if (tab[i] < 0)s = s + tab[i];
+	}
+	printf("suma numereleor negative este %d", s);
+
+		if (tab)
+		free(tab);
+}

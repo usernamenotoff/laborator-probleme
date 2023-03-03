@@ -1,0 +1,13 @@
+1.#include<stdio.h>
+
+int main()
+{float a, b, c;
+
+printf("introduceti numrele:");
+scanf_s("%f %f %f", &a, &b, &c);
+
+float s = (a + b + c) / 3; //calculul mediei aritmetice//
+printf(    "suma mediei aritmetice este: %f",  s);//afisarea mediei aritmetice//
+
+return 0;
+}

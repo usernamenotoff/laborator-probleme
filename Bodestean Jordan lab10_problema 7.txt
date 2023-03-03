@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+int main()
+{char a[202];
+char p[202];
+int n;
+
+printf("introduceti primul sir de caractere\t");
+scanf("%s", a);
+
+
+
+printf("\nintroduceti al doilea sir de caractere\t");
+scanf("%s", p);
+
+
+
+
+strcat(a,p);//lipirea sirurilor folosind functia strcat(la sirul a i se adauga sirul p)//
+
+printf("%s", a);
+
+return 0;
+
+
+}
+
+   

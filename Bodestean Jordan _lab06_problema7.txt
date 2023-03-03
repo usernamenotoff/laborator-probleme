@@ -1,0 +1,45 @@
+//lab06 probelma 7//
+#define _NO_CRT_SECURE_WARNINGS
+#include<stdio.h>
+int main()
+{
+	float suma, impartire, scadere, inmultire;
+	float a, b;
+	int suma1, impartire1, scadere1, inmultire1;
+	printf("introduceti notele:");
+	scanf_s("%f %f", &a, &b);
+	suma = a + b;
+	printf("\nsuma este:%.2f", suma);
+	if (suma + 0.5 >= (int)suma + 1) {
+		suma1 = (int)suma + 1;
+
+	}
+	else suma1 = (int)suma;
+	printf("\nnumarul intreg al sumei este:%d",suma1);
+		inmultire = a * b;
+	printf("\ninmultirea este:%.2f", inmultire);
+	if (inmultire + 0.5 >= (int)inmultire + 1) {
+		inmultire1 = (int)inmultire + 1;
+	}
+	else
+		inmultire1 = (int)inmultire;
+	printf("\nnumarul intreg al inmultiri este:%d", inmultire1);
+	if (a > b)scadere = a - b;
+	else scadere = b - a;
+	printf("\nscaderea este:%.2f", scadere);
+	if (scadere + 0.5 >= (int)scadere) {
+		scadere1 = (int)scadere;
+	}
+		printf("\nnumarul intreg al scaderii este:%d", scadere1);
+		if (a > b)impartire = a / b;
+		else impartire = b / a;
+		printf("\nimpartirea este:%.2f", impartire);
+		if (impartire + 0.5 >= (int)impartire + 1) {
+			impartire1 = (int)impartire + 1;
+		}
+		else
+			impartire1 = (int)impartire;
+		printf("\nnumarul intreg al impartirii este:%d", impartire1);
+	
+		return 0;
+	}

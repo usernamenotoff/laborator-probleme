@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+int main()
+{
+	int a, n, i;
+	scanf_s("%d%d", &n,&a);
+	int nr = a;
+	if (n == 0)a = 1;
+	else
+	for (i = 1; i < n; i++){
+		a = a * nr;
+	}
+
+	printf("%d", a);
+	return 0;
+}

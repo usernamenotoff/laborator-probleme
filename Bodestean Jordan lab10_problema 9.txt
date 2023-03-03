@@ -1,0 +1,41 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+void afisare_citire(float a[101],int n,char nume[20]) { 
+	int i, j;
+	for (i = 0; i < n; i++) {
+		printf("introduceti numele elevului\t");
+		scanf("%s", nume);
+		for (j = 0; j < 7; j++) { //7 deoarece sunt 7 materii  v[0]=sport,v[1]=analiza,v[2]=algebra,v[3]=fizica,v[4]=cirucite,v[5]=programare,v[6]=info apli//
+
+			printf("introduceti notele\t", j);
+			scanf("%f", &a[j]);
+		}
+	}
+
+}
+int main()
+{
+	int n;
+	float a[101];
+	char nume[20];
+	int j, i;
+	float suma , media;
+	printf("introduceti nr elevilor\t");
+	scanf("%d", &n);
+
+	afisare_citire(a, n, nume);
+	
+	for (i = 0; i < n; i++) {//primul for e pentru numele elevului//
+		suma = 0;
+		media = 0;
+		for (j = 0; j < 7; j++) {//pentru nota//
+			suma = suma + a[j];
+}
+		media = suma / 7;
+		if (media >= 8) printf(" %s", nume); //verifica media si afiseaza numele elevului cu media >=8//
+	}
+
+
+	return 0;
+}

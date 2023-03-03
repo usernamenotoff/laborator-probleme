@@ -1,0 +1,16 @@
+#define _NO_CRT_SECURE_WARNINGS_
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int raza;
+	float pi = 3.14;
+	scanf_s("%d", &raza);
+	float aria = pi * (raza * raza);
+	printf("aria este %10.3f \n", aria);
+	float lungi = 2 * raza * pi;
+	printf("lungimea este %10.3f", lungi);
+
+	return 0;
+
+}

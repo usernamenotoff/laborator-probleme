@@ -1,0 +1,59 @@
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
+#define MAX 20
+struct student {
+	char nume [20];
+	struct note media;
+	char sesiune[20];
+
+
+};
+struct note {
+	float nota1;
+	float nota2;
+	float nota3;
+};
+void citire (struct student);
+int main() {
+	int n;
+	int i;
+	char sesiune2[20] = { "iarna"};
+	printf("introduceti nr de studenti");
+	scanf("%d", &n);
+	struct student* tab;
+	
+	tab=(struct student*)malloc(sizeof(struct student));
+	
+
+	for (i = 0; i < n; i++)
+		citire(&tab[i]);
+	for (i = 0; i < n; i++) {
+		if (strcmp(tab[i].sesiune, sesiune2)) {
+			
+			printf("\nda");
+		}
+		printf("media este%f", tab[i].media);
+	}
+
+	
+
+	return 0;
+}
+
+void citire (struct student* p) {
+	printf("\nnumele studentului:");
+	scanf("%s", p->nume);
+	printf("\nnota1:");
+	scanf("%f",(p->media).nota1);
+	printf("\nnota2:");
+	scanf("%f", (p->media).nota2);
+	printf("\nnota3:");
+	scanf("%f", (p->media).nota3);
+	printf("\nintroduceti sesiunea:");
+	scanf("%s", p->sesiune);
+
+}

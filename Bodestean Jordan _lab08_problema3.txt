@@ -1,0 +1,37 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define DIM 200
+
+int main() {
+	int d[DIM], s = 0, i, n,aux,j;
+	printf("numarul de vectori");
+	scanf("%d", &n);
+	if (n <= 10) {
+		for (i = 0; i < n; i++) {
+			printf("v[%d]=", i);
+			scanf("%d", &d[i]);
+		}
+
+
+
+		for (i = 0; i < n-1 ; i++) {
+			for (j = i + 1; j < n ; j++) { 
+
+
+				if (d[i] < d[j]) {
+					aux = d[i];
+					d[i] = d[j];
+					d[j] = aux;
+				}
+			}
+
+		}
+
+		for (i = 0; i < n; i++) {
+			printf("%d\t", d[i]);
+		}
+	}
+	else 	printf("invalid");
+
+	return 0;
+}

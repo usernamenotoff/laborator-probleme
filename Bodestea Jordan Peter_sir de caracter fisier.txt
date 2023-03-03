@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+	char c[20];
+	int m;
+	int n;
+	int i;
+	float s = 0;
+	int v[101];
+	printf("introduceti numele fisierului");
+	scanf("%s", c);
+
+	printf("introduceti nr de elemente");
+	scanf("%d", &n);
+
+	for (i = 0; i < n; i++) {
+		printf("\nv[%d]=", i);
+
+		scanf("%d", &v[i]);
+	}
+	FILE* fp;
+	
+	m = fopen_s(&fp, c, "a");
+
+	if (m != NULL) {
+		perror("Error in opening 'file.txt'");
+		exit(1);
+	}
+	
+	for (i = 0; i < 10; i++)fprintf(fp, "%d",v[i]);
+	
+
+	
+	for (i = 0; i, n; i++) {
+		s = s + v[i];
+	}
+	float media =s/n;
+	fprintf(fp,"media arimtetica este=%2.f", media);
+	fclose(fp);
+	return 0;
+}

@@ -1,0 +1,34 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include <malloc.h>
+#include<math.h>
+
+
+int main() {
+	int n;
+	int p[101];
+	int i,j;
+	float media; 
+	float contor = 0, s = 0;
+	 
+	printf("introduceti nr de elemente");
+	scanf("%d", &n);
+	
+
+	for (i = 0; i < n; i++) {
+		printf("p[%d]=", i);
+		scanf("%d", &p[i]);
+	}
+	for (i = 0; i < n; i++) {
+		s = s + p[i];
+		contor++;
+
+
+	}
+	
+	media = s / contor;
+	printf("media nr negative sau positive este=%.2f", media);
+}
+

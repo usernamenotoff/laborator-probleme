@@ -1,0 +1,260 @@
+problema 1
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include <malloc.h>
+#include<math.h>
+
+
+int main() {
+        int n;
+        int p[101];
+        int i,j;
+        float media; 
+        float contor = 0, s = 0;
+         
+        printf("introduceti nr de elemente");
+        scanf("%d", &n);
+        
+
+        for (i = 0; i < n; i++) {
+                printf("p[%d]=", i);
+                scanf("%d", &p[i]);
+        }
+        for (i = 0; i < n; i++) {
+                s = s + p[i];
+                contor++;
+
+
+        }
+        
+        media = s / contor;
+        printf("media nr negative sau positive este=%.2f", media);
+}
+
+
+
+
+
+problema 2
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+        int x[30], i, n;
+        int md;//cel mai mic numar//
+        scanf("%d", &n);
+        for (i = 0; i < n; i++) {
+        printf("\nx[%d]=", i);
+        scanf_s("%d", &x[i]);
+}
+        md = x[0];//ia valoarea primului termen//
+        for (i = 0; i<n ;i++) {
+if(x[i]>=0){
+                if (md >x[i])md = x[i];
+
+        }}
+        
+        printf("%d", md);
+
+        return 0;
+
+}
+
+
+problema 3
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define DIM 200
+
+int main() {
+        int d[DIM], s = 0, i, n,aux,j;
+        printf("numarul de vectori");
+        scanf("%d", &n);
+        if (n <= 10) {
+                for (i = 0; i < n; i++) {
+                        printf("v[%d]=", i);
+                        scanf("%d", &d[i]);
+                }
+
+
+
+                for (i = 0; i < n-1 ; i++) {
+                        for (j = i + 1; j < n ; j++) { 
+
+
+                                if (d[i] < d[j]) {
+                                        aux = d[i];
+                                        d[i] = d[j];
+                                        d[j] = aux;
+                                }
+                        }
+
+                }
+
+                for (i = 0; i < n; i++) {
+                        printf("%d\t", d[i]);
+                }
+        }
+        else         printf("invalid");
+
+        return 0;
+}
+
+
+problema 5
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define DIM 200
+
+int main() {
+        char p[20];
+        char n[20];
+        printf("introduceti numele \n ");
+        scanf("%s", n);
+        printf("introduceti pronumele\n  ");
+        scanf("%s", p);
+
+                
+        p[0] = p[0] - 32;//litera mica se face mare//
+        n[0] = n[0] - 32;
+        printf("%s",n);//afisarea numelui si prenumelui cu litera mare//
+
+        printf("%s", p);
+
+        return 0;
+}
+
+
+problema 9
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include <malloc.h>
+#include<math.h>
+
+int main() {
+        int v[101];
+        int n, i;
+        printf("introduceti nr de elemente");
+        scanf("%d", &n);
+        for (i = 0; i < n; i++) {
+                printf("\nv[%d]=", i);
+                scanf("%d", &v[i]);
+
+        }
+        
+        int contor = 0;
+        for (i = 0; i < n; i++) {
+                if (v[i] < 0 && v[i]% 2!= 0) {
+                        contor++;
+                        printf("\nnr negativ impar=%d", v[i]);
+                }
+
+        }
+        printf("\nnumarul numerelor negative impare este=%d", contor);
+}
+
+
+problema 10
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include <malloc.h>
+#include<math.h>
+void matrice(int n, int v[101], int x[101] ,int nr );
+
+int main() {
+        int v[101],x[101];
+        int i,n;
+        printf("introduceti nr de elemente");
+        scanf("%d", &n);
+        for (i = 0; i < n; i++) {
+                printf("\nv[%d]=", i);
+                scanf("%d", &v[i]);
+
+        }
+        
+        int nr = 0;
+        for (i = 0; i < n; i++) {
+                if (v[i] % 2 == 0)
+                        nr++;
+        }
+
+        matrice(n, x, v, nr);
+
+
+        }
+
+void matrice(int n, int x[101],int v[101],int nr) {
+        int i;
+        for (i = 0; i < n; i++) {
+                printf("\nx[%d]=", i);
+                x[i] = v[i] % nr;
+                printf("%d", x[i]);
+
+
+        }
+
+}
+
+
+problema 11
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include<string.h>
+#include<cstring>
+#include<stdlib.h>
+#include <malloc.h>
+#include<math.h>
+
+int main() {
+        char n[101];
+        int i;
+        scanf("%s", n);
+        int m = strlen(n);
+        for (i = 0; i * 2 <= m - 1; i++) {
+                char aux = n[i];
+                n[i] = n[m - i - 1];
+                n[m - i - 1] = aux;
+
+        }
+        int j = -1;
+        printf("sirul inversat:%s\n", n);
+        char x[101];
+
+        for (i = 0; i < m; i = i + 2) {
+                j++;
+                x[j] = n[i];
+
+        }
+
+
+
+
+
+                printf("sirul inversat cu positiile pare:%s", x);
+}
